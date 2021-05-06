@@ -1,7 +1,18 @@
 import React from "react";
 import { ProgressBar } from "react-bootstrap";
 
-export default function DezzersCards({ name, creator, image }) {
+export default function DezzersCards({
+	name,
+	creator,
+	image,
+	total_songs,
+	songIds,
+}) {
+	console.log(total_songs, songIds);
+	function CalculatePersentage(completed, total) {
+		return Math.round((completed / total) * 100);
+	}
+
 	return (
 		<div
 			className="d-flex"
