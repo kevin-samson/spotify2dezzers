@@ -6,6 +6,10 @@ import { Container, Col } from "react-bootstrap";
 export default function Converter({ match }) {
 	const [data, setData] = useState([]);
 
+	function CalculatePersentage(completed, total) {
+		return Math.round((completed / total) * 100);
+	}
+
 	useEffect(() => {
 		axios
 			.get("/spotify_tracks", {
@@ -17,6 +21,26 @@ export default function Converter({ match }) {
 				setData(res.data);
 			});
 	}, [match.params.id]);
+
+	useEffect(() => {
+		data.forEach((playlist) => {
+			playlist.forEach((track) => {
+				axios.get(`/get_id?isrc=${item}`).then((res) =>
+					setSongId((prevVal) => {
+						return [
+							...prevVal,
+							{
+								playlist_name: detail.name,
+								song_id: res.data.song_id,
+								track: res.data.name,
+							},
+						];
+					})
+				);
+			});
+		});
+	}, [data]);
+
 	return (
 		<Container>
 			<Col>
