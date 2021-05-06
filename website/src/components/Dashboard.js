@@ -49,7 +49,9 @@ export default function Dashboard() {
 		<Container fluid style={{ marginTop: "1rem", marginBottom: "1rem" }}>
 			<Row>
 				<Col xs={10} md={8}>
-					<h1 className="text-center border-bottom mb-8">Your playlists</h1>
+					<h1 className="text-center border-bottom mb-8">
+						Your playlists
+					</h1>
 					<Row>
 						{playlists.map((playlist) => {
 							return (
@@ -66,7 +68,11 @@ export default function Dashboard() {
 					</Row>
 				</Col>
 				<Col md={3}>
-					<Sidebar selected={selected} total={total} key={1}></Sidebar>
+					<Sidebar
+						selected={selected}
+						total={total}
+						key={1}
+					></Sidebar>
 				</Col>
 			</Row>
 		</Container>
