@@ -58,7 +58,8 @@ def spotify_tracks():
 
         playlist_details = sp.playlist(playlist)
         temp_d = {'tracks': track_isrc, 'playlist_name': playlist_details['name'],
-                  'image': playlist_details['images'].pop()['url'], 'creator': playlist_details['owner']['display_name']}
+                  'image': playlist_details['images'].pop()['url'],
+                  'creator': playlist_details['owner']['display_name'], 'total_tracks': len(track_isrc)}
         d.append(temp_d)
         count += 1
     return jsonify(d)
