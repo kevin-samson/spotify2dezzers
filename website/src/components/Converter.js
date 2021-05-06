@@ -14,16 +14,7 @@ export default function Converter({ match }) {
 				},
 			})
 			.then((res) => {
-				setData(
-					res.data.map((item) => {
-						return {
-							name: item.playlist_name,
-							tracks: item.tracks,
-							image: item.image,
-							creator: item.creator,
-						};
-					})
-				);
+				setData(res.data);
 			});
 	}, [match.params.id]);
 	return (
@@ -32,7 +23,7 @@ export default function Converter({ match }) {
 				{data.map((details) => {
 					return (
 						<DezzersCards
-							name={details.name}
+							name={details.playlist_name}
 							creator={details.creator}
 							image={details.image}
 							key={details.image}
